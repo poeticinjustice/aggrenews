@@ -1,5 +1,14 @@
 **User Stories**
 
+_Primary User (update)_
+
+- A guest should be able to log into the page and see an image of an example of what a user's page can look like
+- It should then be obvious how to create an account, and that they, obviously, should
+- Users would automatically be loggged into their accounts once an account has been created, and they would have the option to log in and log out.
+- Once a user is logged in, they should be able to select from a number of news sources and add them to their account (ideally, they would be able to preview sources their sources in a modal to see recent articles before adding)
+- Those sources would then be populated 
+
+
 _ME_
 
 I've signed up for and received API keys from the Gaurdian and NYT. I also received a developer token from feedly. Ultimately, I want to make a news aggregator. I've always wanted to make a news aggregator. I'm now going to make my own news aggregator because I deserve it. It won't be anywhere near what feedly can do, but whatever. I'm going to be a user who can customize my own news feed and this is my user story. 
@@ -11,7 +20,7 @@ Hi, I'm another user, and I want to tell a story too. I love feedly, but sometim
 
 ![Quick Wireframe](wireframe.png "Quick Wireframe")
 
-_Super Bonus User _
+_Super Bonus User_
 
 The above wireframe is a simple newsfeed. It's meant to focus on the news. I'm the super bonus user, and I'm demanding. This is if Ramzi learns how to code really fast. While the non-bonus site should link to articles, I would be psyched if I could move and resize each of the news sources to fit my super annoying bonus demands. There could even be maximize buttons that allow users to focus on a single source and perhaps an article without leaving the page or going to the original site (this will largely depend on the allowance of the apis/rss feeds).
 
