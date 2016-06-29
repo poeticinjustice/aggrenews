@@ -3,11 +3,14 @@
 _Primary User (update)_
 
 - A guest should be able to log into the page and see an image of an example of what a user's page can look like
-- It should then be obvious how to create an account, and that they, obviously, should
+- It should then be obvious how to create an account, and that they, obviously, should create an account
 - Users would automatically be loggged into their accounts once an account has been created, and they would have the option to log in and log out.
-- Once a user is logged in, they should be able to select from a number of news sources and add them to their account (ideally, they would be able to preview sources their sources in a modal to see recent articles before adding)
-- Those sources would then be populated 
-
+- Once a user is logged in, they should be able to select from a (limited) number of news sources and add them to their account (ideally, they would be able to preview their sources in a modal to see recent articles in the feed before adding)
+- A user would choose a source to display on their feed by clicking the dropdown, selecting the source and clicking, "add."
+- Each source should be displayed seperately in it's own box at first, and each API should be able to be searched individually. If the devloper can integrate the apis, then the user should be allowed to view and search all of the sources together. That would be after the MVC. Each API should still be able to be searched individually.
+- Eventually, more sources would be added, and the views could be modified. That's not expected for the MVC.
+- Unlike Feedly, rss feeds should be able to be added directly--that is not part of the MVC.
+- While many news aggregators before have failed to showcase their greatest potential, mine will be unique by having corgis...all over the place. 
 
 _ME_
 
