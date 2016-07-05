@@ -54,8 +54,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.listen(port, function() {
   console.log('Listening on ', port);
-})
+});
 
 
-// lots pulled directly from Express Auth With Students and other exercises
-// But written and not copied/pasted in hopes I will absorb better
+// // lots pulled directly from Express Auth With Students and other exercises
+// // But written and not copied/pasted in hopes I will absorb better
