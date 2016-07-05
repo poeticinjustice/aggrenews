@@ -50,10 +50,13 @@ module.exports = router;
 It first declares the express router, then a function renders the home page, and it exports itself to be recognized by the app.
 
 The key controller retrieves the api key from where it's stored in the bash profile, gets information from that api, using the key in its url, and sends that data out with the key embedded in the url via res.send(body).
+```
 const gKey    = process.env.GUARDIAN_KEY;
 router.get('/guardian', function(req, res) {
   reqmod('http://content.guardianapis.com/search?q=brexit&api-key='+gKey+'&format=json', function (error, response, body) {res.send(body);})
 })
+```
+
 
 Script.js then parses that data using ajax and jQuery. It first calls from the url exported by the router (key/guardian), understands that the data it will be parsing will be in json format and indicates where the data will be distributed on the page when successfully retrieved.
 
