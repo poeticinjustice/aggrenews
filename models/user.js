@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const dbConnection    = 'mongodb://localhost:27017/news_auth';
+const dbConnection    = process.env["MONGODB_URI"] || 'mongodb://localhost:27017/auth_practice';
 const bcrypt          = require('bcrypt');
 const salt            = bcrypt.genSalt(10);
 
