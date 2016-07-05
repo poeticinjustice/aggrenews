@@ -1,5 +1,5 @@
 const router  = require('express').Router();
-const reqmod  = require('request');
+const request  = require('request');
 
 // Keys saved in ~/.bash_profile as:
 // export KEY_NAME=KEY_NUMBER  with no spaces or quotes
@@ -14,18 +14,19 @@ const reqmod  = require('request');
 // then did source ~/.bash_profile
 // then it worked
 
-const gKey  = process.env.GUARDIAN_KEY;
-const nKey  = process.env.NYT_KEY;
+const gKey    = process.env.GUARDIAN_KEY;
+const nKey    = process.env.NYT_KEY;
 
 
 router.get('/guardian', function(req, res) {
-  reqmod('http://content.guardianapis.com/search?q=brexit&api-key='+gKey+'&format=json', function (error, response, body) {
+  request('http://content.guardianapis.com/search?api-key='+gKey+'&format=json&q='+req.query.term, function (error, response, body) {
       res.send(body);
   })
 })
 
+
 router.get('/nyt', function(req, res) {
-  reqmod('http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=brexit&api-key='+nKey, function (error, response, body) {
+  request('http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key='+nKey+'&q='+req.query.term, function (error, response, body) {
       res.send(body);
   })
 })

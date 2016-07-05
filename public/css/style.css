@@ -1,0 +1,77 @@
+h1 {
+  text-align: center;
+}
+#search {
+  width: 50%;
+  margin: 0 auto;
+}
+input {
+  width: 78%;
+  font-size: 1.2em;
+}
+button {
+  width: 20%;
+  font-size: 1.2em;
+}
+#results {
+  margin: 0;
+}
+#gpara, #npara, #upara {
+  text-align: center;
+}
+#glogo {
+  content: url("../img/logo_guardian.png");
+  margin: auto;
+  width: 64%;
+}
+#nlogo {
+  content: url("../img/logo_nyt.png");
+  margin: auto;
+  width: 76%;
+}
+#newsitem {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  margin: 2%;
+}
+#newsitem ul li{
+  height: 100px;
+}
+#newsitem ul li img{
+  height: 80px;
+  margin: 0 1%;
+  float: left;
+}
+#gnewsitem {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  margin: 2%;
+}
+#nyt_column {
+  width: 40%;
+  float: left;
+  overflow: hidden;
+  border: solid green;
+  margin: 2% .32%;
+}
+#guardian_column {
+  width: 40%;
+  float: left;
+  overflow: hidden;
+  border: solid red;
+  margin: 2% .32%;
+}
+#user_column {
+  width: 16%;
+  float: left;
+  overflow: hidden;
+  border: solid black;
+  margin: 2% .32%;
+}
+ul {
+  list-style-type: none;
+  padding: 2%;
+}
+

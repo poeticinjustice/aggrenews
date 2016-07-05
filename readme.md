@@ -1,4 +1,91 @@
+**Progress report**
+
+_Routing_
+
+Going to the homepage initiates the template page, index.ejs, through an express route, which brings in head.ejs from the partials. head.ejs loads stylesheets, jquery and script.js.
+
+Going to the homepage first triggers app.js, which is declared in the package.json as the main page. The routing begins at app.js where apps are required by setting constants. This app was built with express, morgan, body-parser and path.
+
+The express app and port are declared this way:
+
+~~~js
+const app               = express();
+const port              = process.env.PORT || 3000;
+~~~
+
+Routes are then created with the controllers.
+To create the home page, two routes were created as constants:
+
+~~~js
+const homeController    = require('./controllers/home');
+const keyController     = require('./controllers/key');
+~~~
+
+The views path and ejs capabilities (the view engine) are also set in app.js, using app.set.
+The views directory holds the ejs files that create the HTML pages users will see:
+
+~~~js
+app.set('views', path.join(__dirname,'views'));
+app.set('view engine', 'ejs');
+~~~
+
+A public path is also set with express.static. This takes a static route on the server and allows the public folder to become the root of the website. Static assets like styles and frontend javascript are loaded there:
+app.use(express.static(path.join(__dirname,'public')));
+
+Initial routes are set with the controllers. In my app, they are used to grab and return data from other databases
+
+~~~js
+app.use('/', homeController);
+app.use('/key', keyController);
+~~~
+
+The home controller simply renders the home page:
+
+~~~js
+const router = require('express').Router();
+router.get('/', function(req, res) {res.render('home/index');});
+module.exports = router;
+~~~
+
+It first declares the express router, then a function renders the home page, and it exports itself to be recognized by the app.
+
+The key controller retrieves the api key from where it's stored in the bash profile, gets information from that api, using the key in its url, and sends that data out with the key embedded in the url via res.send(body).
+const gKey    = process.env.GUARDIAN_KEY;
+router.get('/guardian', function(req, res) {
+  reqmod('http://content.guardianapis.com/search?q=brexit&api-key='+gKey+'&format=json', function (error, response, body) {res.send(body);})
+})
+
+Script.js then parses that data using ajax and jQuery. It first calls from the url exported by the router (key/guardian), understands that the data it will be parsing will be in json format and indicates where the data will be distributed on the page when successfully retrieved.
+
+~~~js
+$.ajax({
+  url: '/key/guardian',
+  dataType: 'json',
+  success: function (data) {
+    var results = data.response.results;
+    $(results).each(function(index){
+      var content = results[index];
+      $('.newsitem ul').append($('<li />', 
+      {text: 'Date: ' + content.webPublicationDate}));
+      ...
+    });
+  },
+  error: function () {$(".newsitem").html('<p>Error: ' + error + '</p>');
+  }
+});
+~~~
+
+Need to figure out:
+`app.use(bodyParser.json());`
+
+
+
 **User Stories**
+
+_Primary Users (revamp)_
+
+- As users we changed our minds and decided that we want a news comparison engine. We'll tell you about it later but recognize that you have limited time to actually code, so go on with your bad self. You'll figure it out. Just think, "news comparison engine!"
+
 
 _Primary User (update)_
 

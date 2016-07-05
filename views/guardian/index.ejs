@@ -2,13 +2,24 @@
 <html>
 <head>
   <title>Guardian</title>
-  <% include ../partials/head %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="/css/style.css">
+  <script
+    src="https://code.jquery.com/jquery-2.2.4.js"
+    integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous">
+  </script>
+  <script type="text/javascript" src="../js/gScript.js"></script>
 </head>
 <body>
   <h1>
     Guardian
   </h1>
-  <div class="newsitem">
+  <div id="gnewsitem">
+    <p>Search the Guardian!</p>
+    <input id="gField" class="content" placeholder="search content" type="text">
+    <button id="gButton" class="search search-content" type='submit'>Search</button>
     <ul><!-- News Content--></ul>
   </div>
 </body>

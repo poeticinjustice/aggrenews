@@ -8,8 +8,104 @@
   <h1>
     Guardian vs New York Times
   </h1>
-  <div class="newsitem">
-    <ul><!-- News Content--></ul>
+  <div id="description">
+    <p>Search two of the most influential papers of record in two of the world's most colonial countries as they begin their decent into comedic absurdity. Do you want to know about Brexit, Trump or the supremacists who support such initiatives and individuals? Then search here to see the differences in reporting on each side of the Atlantic!</p>
   </div>
+  <div id="search">
+    <input id="newsField" class="content" placeholder="search content" type="text">
+    <button id="newsButton" class="search search-content" type='submit'>Search</button>
+  </div>
+  <div id="results">
+    <div id="guardian_column">
+      <div id="glogo"></div>
+      <ul><!-- Guardian Content--></ul>
+    </div>
+    <div id="nyt_column">
+      <div id="nlogo">NYT<br><br></div>
+      <ul><!-- NYT Content--></ul>
+    </div>
+    <div id="user_column">
+      <p id="upara">Users</p>
+      <div>
+        <% if(user) { %>
+          Welcome, <%= user.fname %> <%= user.lname %>
+        <% } else { %>
+          Welcome, Guest
+        <% } %>
+      </div>
+      <div>
+        <form method="post" action="user/logout?_method=DELETE">
+          <input type="submit" value="Logout">
+        </form>
+      </div>
+      <ul><!-- User Content--></ul>
+    </div>
+  </div>
+
 </body>
 </html>
+
+<!--
+
+
+Going to the homepage initiates this template page, index.ejs, through an express route, which brings in head.ejs from the partials. head.ejs loads stylesheets, jquery and script.js.
+
+Going to the homepage first triggers app.js, which is declared in the package.json as the main page. The routing begins at app.js where apps are required by setting constants. This app was built with express, morgan, body-parser and path.
+
+The express app and port are declared this way:
+const app               = express();
+const port              = process.env.PORT || 3000;
+
+Routes are then created with the controllers.
+To create the home page, two routes were created as constants:
+const homeController    = require('./controllers/home');
+const keyController     = require('./controllers/key');
+
+The views path and ejs capabilities (the view engine) are also set in app.js, using app.set.
+The views directory holds the ejs files that create the HTML pages users will see:
+app.set('views', path.join(__dirname,'views'));
+app.set('view engine', 'ejs');
+
+A public path is also set with express.static. This takes a static route on the server and allows the public folder to become the root of the website. Static assets like styles and frontend javascript are loaded there:
+app.use(express.static(path.join(__dirname,'public')));
+
+Initial routes are set with the controllers. In my app, they are used to grab and return data from other databases
+app.use('/', homeController);
+app.use('/key', keyController);
+
+The home controller simply renders the home page:
+const router = require('express').Router();
+router.get('/', function(req, res) {res.render('home/index');});
+module.exports = router;
+It first declares the express router, then a function renders the home page, and it exports itself to be recognized by the app.
+
+The key controller retrieves the api key from where it's stored in the bash profile, gets information from that api, using the key in its url, and sends that data out with the key embedded in the url via res.send(body).
+const gKey    = process.env.GUARDIAN_KEY;
+router.get('/guardian', function(req, res) {
+  reqmod('http://content.guardianapis.com/search?q=brexit&api-key='+gKey+'&format=json', function (error, response, body) {res.send(body);})
+})
+
+Script.js then parses that data using ajax and jQuery. It first calls from the url exported by the router (key/guardian), understands that the data it will be parsing will be in json format and indicates where the data will be distributed on the page when successfully retrieved.
+$.ajax({
+  url: '/key/guardian',
+  dataType: 'json',
+  success: function (data) {
+    var results = data.response.results;
+    $(results).each(function(index){
+      var content = results[index];
+      $('.newsitem ul').append($('<li />', {text: 'Date: ' + content.webPublicationDate}));
+      ...
+    });
+  },
+  error: function () {$(".newsitem").html('<p>Error: ' + error + '</p>');
+  }
+});
+
+
+
+Need to figure out:
+app.use(bodyParser.json());
+
+
+
+-->
