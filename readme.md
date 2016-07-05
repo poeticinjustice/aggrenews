@@ -4,7 +4,7 @@ _Routing_
 
 Going to the homepage initiates the template page, index.ejs, through an express route, which brings in head.ejs from the partials. head.ejs loads stylesheets, jquery and script.js.
 
-Going to the homepage first triggers app.js, which is declared in the package.json as the main page. The routing begins at app.js where apps are required by setting constants. This app was built with express, morgan, body-parser and path.
+Going to the domain first triggers app.js, which is declared in the package.json as the main page. The routing begins at app.js where apps are required by setting constants. This app was built with express, morgan, body-parser and path.
 
 The express app and port are declared this way:
 
