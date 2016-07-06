@@ -4,7 +4,7 @@ Description of processes such as routing to be rewritten upon update after class
 
 
 **User Stories**
-
+As a user, I would like to be able to search a news subject and compare how different news sources produce headlines. Since Brexit is all over the international media right now, it would be great to see how two papers of record report on such subjects and, especially, to be able to compare the headlines that are generated in the US vs the UK. I would like to enter one search term and see a justoposition of the results. That's all I want--for now.
 
 
 Current Flow Chart
