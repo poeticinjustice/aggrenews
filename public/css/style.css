@@ -53,14 +53,14 @@ button {
   width: 40%;
   float: left;
   overflow: hidden;
-  border: solid green;
+  /*border: solid green;*/
   margin: 2% .32%;
 }
 #guardian_column {
   width: 40%;
   float: left;
   overflow: hidden;
-  border: solid red;
+  /*border: solid red;*/
   margin: 2% .32%;
 }
 #user_column {
