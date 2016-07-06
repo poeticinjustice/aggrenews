@@ -8,12 +8,15 @@ Description of processes such as routing to be rewritten upon update after class
 
 
 Current Flow Chart
+
 ![Current Flow Chart](flow_version1.png "Current Flow Chart")
 
 Flow Chart v2 (for future--to be updated for portfolio and personal use)
+
 ![Flow Chart v2](flow_version1.png "Flow Chart v2")
 
 Old wireframe
+
 ![Quick Wireframe](wireframe.png "Quick Wireframe")
 
 
